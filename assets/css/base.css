@@ -1,0 +1,78 @@
+:root {
+  --ratio: 1;
+  --fs-xs: calc(0.75rem / var(--ratio));
+  --fs-s: calc(0.875rem / var(--ratio));
+  --fs-base: calc(1rem / var(--ratio));
+  --fs-l: calc(1.125rem / var(--ratio));
+  --fs-xl: calc(1.25rem / var(--ratio));
+  --fs-2xs: calc(1.375rem / var(--ratio));
+  --fs-3xs: calc(1.5rem / var(--ratio));
+  --fs-4xs: calc(1.625rem / var(--ratio));
+  --fs-5xs: calc(1.75rem / var(--ratio));
+  --fs-6xs: calc(1.875rem / var(--ratio));
+  --fs-7xs: calc(2rem / var(--ratio));
+
+  --bg-base-color: #f0f2f5;
+  --bg-gray-color: #e4e6eb;
+  --bg-green-color: #00a400;
+
+  --base-color: #000000;
+  --orange-color: #ffbe61;
+  --white-color: #ffffff;
+  --gray-color: #777777;
+  --blue-color: #0063c3;
+  --black10-color: #333333;
+
+  --lh-xs: 0.75rem;
+  --lh-s: 0.875rem;
+  --lh-l: 1.125rem;
+  --lh-xl: 1.25rem;
+  --lh-base: 1rem;
+  --lh-2xl: 1.375rem;
+  --lh-3xl: 1.5rem;
+  --lh-4xl: 1.625rem;
+  --lh-5xl: 1.75rem;
+  --lh-6xl: 1.875rem;
+
+  --ff-roboto: "Roboto", sans-serif;
+  --ff-opensans: "Open Sans", sans-serif;
+
+  --bg-white: #FFFFFF;
+  --bg-header: #222F3F;
+
+  --border-line: #eee;
+
+  /* z-index */
+  --z-negative: -1;
+  --z-elevate: 1;
+  --z-sticky: 100;
+  --z-drawer: 200;
+}
+
+body {
+  font-family: var(--ff-roboto);
+  color: var(--base-color);
+}
+
+* {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  font-weight: 400;
+  box-sizing: border-box;
+  color: var(--base-color);
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.input {
+    outline: none;
+    border-radius: 2px;
+    border: 1px solid var( --gray-color);
+}

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- font css -->
+    <link rel="stylesheet" href="./assets/css/font.css">
+    <!-- base css -->
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <!-- reset css -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <title>Aligolia</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!----------------- header ------------------------------->
+        <header class="header fixed-top shadow">
+            <a href="#" class="logo">
+                <img src="https://community.algolia.com/instantsearch.js/v1/examples/e-commerce/logo-is.png" alt="logo">
+            </a>
+            <a href="./" class="logo__name">amazing</a>
+            <div class="header__search">
+                <div class="input-group input-search">
+                    <div class="form-outline">
+                        <input type="search" id="form1" class="form-control" placeholder="Search a product"
+                            autocomplete="off" />
+                    </div>
+                    <button type="button" class="btn search__icon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!-------------------------- content ------------------------------->
+        <div class="content">
+            <!-- side bar -->
+            <aside class="side-bar">
+                <div class="clear-filter"></div>
+                <div class="facet">
+                    <div class="facet__title">Show result for</div>
+                    <div class="categories">
+                        <ul class="category__item">
+                            <i class="fa fa-angle-right"></i>
+                            Appliances
+                        </ul>
+                        <ul class="category__item">
+                            <i class="fa fa-angle-right"></i>
+                            Audio
+                        </ul>
+                        <ul class="category__item">
+                            <i class="fa fa-angle-right"></i>
+                            Cameras & Camcorders
+                        </ul>
+                        <ul class="category__item">
+                            <i class="fa fa-angle-right"></i>
+                            Car Electronics & GPS
+                        </ul>
+                        <ul class="category__item">
+                            <i class="fa fa-angle-right"></i>
+                            Cell Phones
+                        </ul>
+                        <ul class="category__item">
+                            <i class="fa fa-angle-right"></i>
+                            Computers & Tables
+                        </ul>
+                        <ul class="category__item">
+                            <i class="fa fa-angle-right"></i>
+                            Health, Finess & Beauty
+                        </ul>
+                        <ul class="category__item">
+                            <i class="fa fa-angle-right"></i>
+                            Office & school Supplies
+                        </ul>
+                        <ul class="category__item">
+                            <i class="fa fa-angle-right"></i>
+                            TV & Home Theater
+                        </ul>
+                        <ul class="category__item">
+                            <i class="fa fa-angle-right"></i>
+                            Video Games
+                        </ul>
+                    </div>
+                </div>
+                <div class="facet">
+                    <div class="facet__title">Refine By</div>
+                    <div class="refinement type">
+                        <span class="refinement__title">
+                            Type
+                        </span>
+                        <div class="refinement__list">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="trendCases">
+                                <label class="form-check-label" for="trendCases">
+                                    Trend Cases
+                                    <span class="refinement__quantity">(457)</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ultProtectionCase">
+                                <label class="form-check-label" for="ultProtectionCase">
+                                    Ult Protection Case
+                                    <span class="refinement__quantity">(393)</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="inkCartridges">
+                                <label class="form-check-label" for="inkCartridges">
+                                    Ink Cartridges
+                                    <span class="refinement__quantity">(249)</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="businessCases">
+                                <label class="form-check-label" for="businessCases">
+                                    Business Cases
+                                    <span class="refinement__quantity">(217)</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="connectivity">
+                                <label class="form-check-label" for="connectivity">
+                                    Connectivity
+                                    <span class="refinement__quantity">(181)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="refinement Brand">
+                        <span class="refinement__title">
+                            Brand
+                        </span>
+                        <div class="refinement__search my-2">
+                            <div class="input-group rounded">
+                                <input type="search" class="form-control rounded" placeholder="Search for other"
+                                    aria-label="Search" aria-describedby="search-addon" />
+                            </div>
+                        </div>
+                        <div class="refinement__list">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="Insignia">
+                                <label class="form-check-label" for="Insignia">
+                                    Insignia
+                                    <span class="refinement__quantity">(457)</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="Samsung">
+                                <label class="form-check-label" for="Samsung">
+                                    Samsung
+                                    <span class="refinement__quantity">(393)</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="Metra">
+                                <label class="form-check-label" for="Metra">
+                                    Metra
+                                    <span class="refinement__quantity">(249)</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="HP">
+                                <label class="form-check-label" for="HP">
+                                    HP
+                                    <span class="refinement__quantity">(217)</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="Apple">
+                                <label class="form-check-label" for="Apple">
+                                    Apple
+                                    <span class="refinement__quantity">(181)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="refinement type">
+                        <span class="refinement__title">
+                            Ratings
+                        </span>
+                        <div class="refinement__list">
+                            <a class="refinement__item rating">
+                                <div class="rating__star">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="rating__count">& UP 16,074</div>
+                            </a>
+                            <a class="refinement__item rating">
+                                <div class="rating__star">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="rating__count">& UP 16,074</div>
+                            </a>
+                            <a class="refinement__item rating">
+                                <div class="rating__star">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="rating__count">& UP 16,074</div>
+                            </a>
+                            <a class="refinement__item rating">
+                                <div class="rating__star">
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <div class="rating__count">& UP 16,074</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="refinement Prices">
+                        <span class="refinement__title">
+                            Prices
+                        </span>
+                        <div class="refinement__list">
+                            <a class="refinement__item price">
+                                ≤ 1
+                            </a>
+                            <a class="refinement__item price">
+                                $1 - 80
+                            </a>
+                            <a class="refinement__item price">
+                                $80 - 160
+                            </a>
+                            <a class="refinement__item price">
+                                $160 - 240
+                            </a>
+                            <a class="refinement__item price">
+                                $240 - 1820
+                            </a>
+                            <a class="refinement__item price">
+                                $1820 - 3400
+                            </a>
+                            <a class="refinement__item price">
+                                $3400 - 4980
+                            </a>
+                            <a class="refinement__item price">
+                                ≥ $4,980
+                            </a>
+                            <div class="price__range my-1">
+                                <span class="text-bold">$</span>
+                                <input class="input" type="number">
+                                <span>to</span>
+                                <span class="text-bold">$</span>
+                                <input class="input" type="number">
+                                <button class="button-circle">go</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="side-bar__other">
+                    Data courtery of Best Buy
+                </div>
+            </aside>
+            <div class="results-wrapper">
+                <div class="results">
+                    <div class="topbar">
+                        <div class="topbar__text">21,469 results in 1ms</div>
+                        <div class="topbar__sort">
+                            <span>Sort by</span>
+                            <select name="" id="">
+                                <option value="Featured">Featured</option>
+                                <option value="Price asc">Price asc</option>
+                                <option value="Price desc">Price desc</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="products">
+                        <div class="row">
+                            <div class="product col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div style="--aspect-ratio:2.2;">
+                                        <div class="card__img">
+                                            <img class="card-img-top" src="https://cdn-demo.algolia.com/bestbuy-0118/3602009_sb.jpg" alt="Card image cap">
+                                        </div>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="card-text">Sharp - 50" Class (49.5" Diag.) - LED - 1080p - Smart - HDTV Roku TV - Black</p>
+                                        <div class="card__info">
+                                            <div class="rating__star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <div class="card__price">$999.99</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div style="--aspect-ratio:2.2;">
+                                        <div class="card__img">
+                                            <img class="card-img-top" src="https://cdn-demo.algolia.com/bestbuy-0118/3602009_sb.jpg" alt="Card image cap">
+                                        </div>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="card-text">Sharp - 50" Class (49.5" Diag.) - LED - 1080p - Smart - HDTV Roku TV - Black</p>
+                                        <div class="card__info">
+                                            <div class="rating__star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <div class="card__price">$999.99</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div style="--aspect-ratio:2.2;">
+                                        <div class="card__img">
+                                            <img class="card-img-top" src="https://cdn-demo.algolia.com/bestbuy-0118/3602009_sb.jpg" alt="Card image cap">
+                                        </div>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="card-text">Sharp - 50" Class (49.5" Diag.) - LED - 1080p - Smart - HDTV Roku TV - Black</p>
+                                        <div class="card__info">
+                                            <div class="rating__star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <div class="card__price">$999.99</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div style="--aspect-ratio:2.2;">
+                                        <div class="card__img">
+                                            <img class="card-img-top" src="https://cdn-demo.algolia.com/bestbuy-0118/3602009_sb.jpg" alt="Card image cap">
+                                        </div>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="card-text">Sharp - 50" Class (49.5" Diag.) - LED - 1080p - Smart - HDTV Roku TV - Black</p>
+                                        <div class="card__info">
+                                            <div class="rating__star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <div class="card__price">$999.99</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="pagination">
+                        <li class="pagination__link page--disable">
+                            <i class="fas fa-angle-left"></i>
+                            Previous page
+                        </li>
+                        <li class="pagination__link page--active">1</li>
+                        <li class="pagination__link">2</li>
+                        <li class="pagination__link">3</li>
+                        <li class="pagination__link">4</li>
+                        <li class="pagination__link">5</li>
+                        <li class="pagination__link">6</li>
+                        <li class="pagination__link">7</li>
+                        <li class="pagination__link">Next page</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
