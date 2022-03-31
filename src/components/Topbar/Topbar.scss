@@ -1,0 +1,15 @@
+@import '../../assets/scss/_variable.scss';
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+
+    &__text {
+        color: $gray-color;
+        font-size: $fs-s;
+    }
+}
+
+

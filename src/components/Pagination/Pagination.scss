@@ -1,0 +1,42 @@
+@import '../../assets/scss/_variable.scss';
+
+.pagination {
+    width: 100%;
+    height: 50px;
+    margin: 10px 0;
+    background-color: $border-line;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__link {
+        padding: 0 8px;
+        cursor: pointer;
+        color: $blue-color;
+    }
+    
+    &__link:hover {
+        text-decoration: underline;
+        font-weight: 700;
+    }
+}
+
+.page--disable {
+    color: $gray-color;
+    cursor: default;
+}
+
+.page--disable:hover {
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.page--active {
+    cursor: default;
+    font-weight: 700;
+    color: $base-color;
+}
+
+.page--active:hover {
+    text-decoration: none;
+}

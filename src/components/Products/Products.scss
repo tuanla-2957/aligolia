@@ -1,0 +1,31 @@
+@import '../../assets/scss/_variable.scss';
+
+.product {
+    padding: 6px;
+}
+.card {
+    padding: 10px 20px 20px 20px;
+    height: 295px;
+
+    &__img {
+        width: 100%;
+        height: 150px;
+    }
+    
+    &-text {
+        font-size: var(--fs-s);
+        font-weight: 700;
+        margin: 10px 0;
+    }
+    
+    &__info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    &__price {
+        font-size: var(--fs-base);
+        font-weight: 700;
+    }
+}

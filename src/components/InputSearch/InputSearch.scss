@@ -1,0 +1,11 @@
+@import '../../assets/scss/_variable.scss';
+
+
+.input-search input {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.search__icon {
+    background-color: $orange-color;
+}

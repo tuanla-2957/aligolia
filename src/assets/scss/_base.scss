@@ -1,0 +1,19 @@
+body {
+  font-family: $ff-roboto;
+  color: $base-color;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: $fs-base;
+  line-height: $lh-base;
+  font-weight: 400;
+  box-sizing: border-box;
+  color: $base-color;
+}
+
+

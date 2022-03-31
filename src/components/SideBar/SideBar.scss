@@ -1,0 +1,34 @@
+@import '../../assets/scss/_variable.scss';
+
+.side-bar {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    padding: 20px 20px 20px 10px;
+    height: 100%;
+    width: 230px;
+    border-right: 1px solid $border-line;
+    overflow-y: auto;
+
+    .clear-filter {
+        margin-bottom: 16px;
+    }
+
+    &__other {
+        padding: 10px;
+        font-size: $fs-s;
+        color: $black10-color;
+    }
+    
+    .facet{
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid $border-line;
+
+        &__title {
+            font-size: $fs-base;
+            color: $gray-color;
+            margin-bottom: 8px;
+        }
+    }
+}

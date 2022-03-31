@@ -1,0 +1,31 @@
+@import '../../assets/scss/_variable.scss';
+
+header {
+    position: fixed;
+    z-index: $z-sticky;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    background: $bg-header;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    .logo {
+        width: 40px;
+        margin-right: 12px;
+
+        &__name {
+            margin-right: 16px;
+            font-size: $fs-6xl;
+            font-weight: 700;
+            color: $white-color;
+        }
+    }
+    
+    &__search {
+        height: 40px;
+    }
+}
+
