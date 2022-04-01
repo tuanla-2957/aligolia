@@ -1,16 +1,56 @@
 import './Topbar.scss'
+import PropTypes from 'prop-types'
+import { React } from 'react';
 
+TopBar.propTypes = {
+    totalResult: PropTypes.number,
+    onSortChange: PropTypes.func
+}
 
-function TopBar({totalResult}) {
+TopBar.defaultProps = {
+    onSortChange: null
+}
+
+function TopBar(props) {
+    const { totalResult, onSortChange } = props
+    const options = [
+        {
+            id: 1,
+            label: "Featured",
+            value: ""
+        },
+        {
+            id: 2,
+            label: "Price asc",
+            value: "asc"
+        },
+        {
+            id: 3,
+            label: "Price desc",
+            value: "desc"
+        }
+    ]
+
+    const handleSortChange = (e) => {
+        onSortChange && onSortChange(e.target.value)
+    }
+
     return (
         <div className="topbar">
             <div className="topbar__text">{totalResult} results in 1ms</div>
             <div className="topbar__sort">
                 <span className='mx-2'>Sort by</span>
-                <select name="" id="">
-                    <option value="Featured">Featured</option>
-                    <option value="Price asc">Price asc</option>
-                    <option value="Price desc">Price desc</option>
+                <select onChange={handleSortChange}>
+                    {
+                        options.map((option) => (
+                                <option
+                                    value={option.value}
+                                    key={option.id}
+                                >
+                                    {option.label}
+                                </option>
+                        ))
+                    }
                 </select>
             </div>
         </div>
