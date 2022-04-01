@@ -9,4 +9,21 @@
         overflow: hidden;
         display: inline-block;
     }
+
+    &__item {
+        font-weight: 400;
+    }
+
+    &--active {
+        font-weight: 700;
+    }
+
+    &--close {
+        height: 0;
+        overflow: hidden;
+    }
+
+    &--open {
+        height: auto;
+    }
 }
