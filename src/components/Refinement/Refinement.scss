@@ -1,0 +1,51 @@
+@import '../../assets/scss/_variable.scss';
+
+.refinement {
+    &__list {
+        font-size: $fs-s;
+    }
+    
+    &__quantity {
+        color: $gray-color;
+    }
+    
+    &__search input {
+        font-size: $fs-xs;
+        line-height: $fs-xs;
+    }
+
+    &__search {
+        .search__icon  {
+            display: none;
+        }
+    }
+    
+    &__item {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content:flex-start;
+        padding: 4px 0;
+        font-size: $fs-s;
+    }
+
+    .rating__count {
+        margin: 2px 0 0 8px;
+    }
+
+    .price__range {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .price__range input {
+        width: 30%
+    } 
+    
+    .button-circle {
+        border-radius: 50%;
+        background-color: $border-line;
+        border: 1px solid  $gray-color;
+    }
+}

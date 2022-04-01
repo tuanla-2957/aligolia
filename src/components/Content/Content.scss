@@ -1,0 +1,14 @@
+@import '../../assets/scss/_variable.scss';
+
+.results-wrapper {
+    width: 100%;
+    padding: 60px 0 0 230px;
+}
+
+.results {
+    padding: 0 10px;
+}
+
+.products {
+    min-height: calc(100vh - 185px);
+}

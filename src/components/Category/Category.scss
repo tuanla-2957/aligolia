@@ -1,0 +1,12 @@
+@import '../../assets/scss/_variable.scss';
+
+.category {
+    &__item {
+        font-size: $fs-s;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: inline-block;
+    }
+}
