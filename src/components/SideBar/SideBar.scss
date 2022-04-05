@@ -31,4 +31,9 @@
             margin-bottom: 8px;
         }
     }
+
+    li:hover {
+        color: $hover-color;
+        cursor: pointer;
+    }
 }

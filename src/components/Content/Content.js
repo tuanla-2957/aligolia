@@ -4,6 +4,7 @@ import Products from '../Products/Products';
 import Pagination from '../Pagination/Pagination';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useStore, actions } from '../../store';
 
 function Content() {
     const initPaging = {
@@ -11,8 +12,8 @@ function Content() {
         _limit: 16
     }
     const [pagination, SetPagination] = useState(initPaging)
-    const [params, setParams] = useState(initPaging)
-    const [products, setProducts] = useState([])
+    const [state, dispatch] = useStore()
+    const { products, params } = state
 
 
 
@@ -20,25 +21,27 @@ function Content() {
         const url = `http://localhost:3000/products`
         axios.get(url, {params})
             .then(res => {
-                setProducts(res.data.data || [])
+                dispatch(actions.fetchListProducts(res.data.data || []))
                 SetPagination(res.data.pagination)
             })
             .catch(error => console.log(error));
     }, [params])
 
     function handlePageChange(newPage) {
-        setParams({
+        const newParams = {
             ...params,
             _page: newPage
-        })
+        }
+        dispatch(actions.getParamProducts(newParams))
     }
 
     function handleSortProduct(sortValue) {
-        setParams({
+        const newParams = {
             ...params,
             _sort: "price",
             _order: sortValue
-        })
+        }
+        dispatch(actions.getParamProducts(newParams))
     }
 
     return (

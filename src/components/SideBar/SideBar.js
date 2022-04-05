@@ -1,66 +1,77 @@
 import './SideBar.scss'
 import Category from '../Category/Category';
 import Refinement from '../Refinement/Refinement';
+import { Fragment, useEffect } from "react";
+import axios from 'axios';
+import { useStore, actions } from '../../store';
+import { categories } from '../Category/categories';
 
 function SideBar() {
-    const categories = ["Appliances", "Audio", "Cameras & Camcorders", "Car Electronics & GPS", "Cell Phones", "Computers & Tables", "Health, Finess & Beauty", "Office & school Supplies", "TV & Home Theater", "Video Games"]
-    const types = [
-        {
-            name: "Insignia",
-            quantity: 457
-        },
-        {
-            name: "Samsung",
-            quantity: 393
-        },
-        {
-            name: "Metra",
-            quantity: 249
-        },
-        {
-            name: "HP",
-            quantity: 217
-        },
-        {
-            name: "Apple",
-            quantity: 181
-        },
-    ]
-    const ratings = [
-        {
-            rate: 4,
-            quantity: 217
-        },
-        {
-            rate: 3,
-            quantity: 217
-        },
-        {
-            rate: 2,
-            quantity: 217
-        },
-        {
-            rate: 1,
-            quantity: 217
-        },
-    ]
-    const prices = ["≤ 1","$1 - 80","$80 - 160","$160 - 240","$240 - 1820","$1820 - 3400", "$3400 - 4980" , "≥ $4,980"]
+    const [state, dispatch] = useStore()
+    const { allProducts, params } = state
+    const typeList = [...(new Set(allProducts.map((product) => product.type)))].slice(0,5)
+    const brandList = [...(new Set(allProducts.map((product) => product.brand)))].slice(0,5)
+    const prices = [...(new Set(allProducts.map((product) => product.price_range)))].sort()
+    const rates = [4,3,2,1]
+
+    const types = typeList.map( (item, index) => {
+        return {
+            id: index,
+            name: item,
+            quantity: allProducts.reduce((total, product) => {
+                if (product.type === item) {
+                    return total + 1
+                }
+                return total
+            }, 0)
+        }
+    })
+    const brands = brandList.map( (item, index) => {
+        return {
+            id: index,
+            name: item,
+            quantity: allProducts.reduce((total, product) => {
+                if (product.brand === item) {
+                    return total + 1
+                }
+                return total
+            }, 0)
+        }
+    })
+
+    const ratings = rates.map( (item, index) => {
+        return {
+            id: index,
+            rate: item,
+            quantity: allProducts.reduce((total, product) => {
+                if (product.rating === item) {
+                    return total + 1
+                }
+                return total
+            }, 0)
+        }
+    })
+
+
+
+
+
+    useEffect(() => {
+        const url = `http://localhost:3000/products`
+        axios.get(url)
+            .then(res => {
+                dispatch(actions.fetchAllProducts(res.data.data || []))
+            })
+            .catch(error => console.log(error));
+    }, [])
+
     return (
         <aside className="side-bar">
             <div className="clear-filter"></div>
             <div className="facet">
                 <div className="facet__title">Show result for</div>
                 <div className="categories">
-                    <Category data={categories}>
-                        {(category, index) => {
-                            return (
-                                <li className="category__item" key={index}>
-                                    <i className="fa fa-angle-right"></i>
-                                    {category}
-                                </li>
-                            )
-                        }}
-                    </Category>
+                    {categories.map((category, index) => <Category category={category} key={index} />)}
                 </div>
             </div>
             <div className="facet">
@@ -70,7 +81,7 @@ function SideBar() {
                 </div>
 
                 <div className="refinement Brand">
-                    <Refinement title='Brand' data={types} />
+                    <Refinement title='Brand' data={brands} />
                 </div>
 
                 <div className="refinement type">
