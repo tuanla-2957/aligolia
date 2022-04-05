@@ -1,66 +1,102 @@
 import './SideBar.scss'
 import Category from '../Category/Category';
 import Refinement from '../Refinement/Refinement';
+import { categories } from '../Category/categories';
+import { useState, useEffect } from 'react';
+import { getAllProducts } from '../slice/productsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetParams, setCurrentCategory, setChecked } from '../slice/filtersSlice'
 
 function SideBar() {
-    const categories = ["Appliances", "Audio", "Cameras & Camcorders", "Car Electronics & GPS", "Cell Phones", "Computers & Tables", "Health, Finess & Beauty", "Office & school Supplies", "TV & Home Theater", "Video Games"]
-    const types = [
-        {
-            name: "Insignia",
-            quantity: 457
-        },
-        {
-            name: "Samsung",
-            quantity: 393
-        },
-        {
-            name: "Metra",
-            quantity: 249
-        },
-        {
-            name: "HP",
-            quantity: 217
-        },
-        {
-            name: "Apple",
-            quantity: 181
-        },
-    ]
-    const ratings = [
-        {
-            rate: 4,
-            quantity: 217
-        },
-        {
-            rate: 3,
-            quantity: 217
-        },
-        {
-            rate: 2,
-            quantity: 217
-        },
-        {
-            rate: 1,
-            quantity: 217
-        },
-    ]
-    const prices = ["≤ 1","$1 - 80","$80 - 160","$160 - 240","$240 - 1820","$1820 - 3400", "$3400 - 4980" , "≥ $4,980"]
+    const dispatch = useDispatch();
+    const params = useSelector(state => state.filters.params)
+    const [isFilterChange, setIsFilterChange] = useState(false)
+    const allProducts = useSelector(state => state.products.listAll)
+    const searchBrand = useSelector(state => state.filters.brand_like)
+    const typeList = [...(new Set(allProducts.map((product) => product.type)))].slice(0,5)
+    const brandList = [...(new Set(allProducts.map((product) => product.brand)))].slice(0,5)
+    const prices = [...(new Set(allProducts.map((product) => product.price_range)))].sort()
+    const rates = [4,3,2,1]
+    const initParams = {
+        q: '',
+        _limit: 16,
+        _page: 1,
+        type: [],
+        brand: [],
+        _sort: '',
+        _order: '',
+        categories: [],
+        rating: null,
+        price_gte: null,
+        price_lte: null,
+    }
+
+    const types = typeList.map( (item, index) => {
+        return {
+            id: index,
+            name: item,
+            quantity: allProducts.reduce((total, product) => {
+                if (product.type === item) {
+                    return total + 1
+                }
+                return total
+            }, 0)
+        }
+    })
+    const brands = brandList.map( (item, index) => {
+        return {
+            id: index,
+            name: item,
+            quantity: allProducts.reduce((total, product) => {
+                if (product.brand === item) {
+                    return total + 1
+                }
+                return total
+            }, 0)
+        }
+    })
+
+    const ratings = rates.map( (item, index) => {
+        return {
+            id: index,
+            rate: item,
+            quantity: allProducts.reduce((total, product) => {
+                if (product.rating === item) {
+                    return total + 1
+                }
+                return total
+            }, 0)
+        }
+    })
+
+    console.log("first", searchBrand)
+
+    useEffect(() => {
+        dispatch(getAllProducts({   brand_like: searchBrand }))
+    }, [dispatch, searchBrand])
+
+    useEffect(() => {
+        setIsFilterChange(true)
+    }, [params])
+
+    function clearFilterOnClick() {
+        setIsFilterChange(false)
+        dispatch(resetParams(initParams))
+        dispatch(setCurrentCategory(''))
+        dispatch(setChecked([]))
+    }
+
     return (
         <aside className="side-bar">
-            <div className="clear-filter"></div>
+            <div className={ isFilterChange ? "clear-filter d-block" : "d-none"}>
+                <button className='btn btn-outline-secondary button__clear' onClick={clearFilterOnClick}>
+                    Clear Filter
+                </button>
+            </div>
             <div className="facet">
                 <div className="facet__title">Show result for</div>
                 <div className="categories">
-                    <Category data={categories}>
-                        {(category, index) => {
-                            return (
-                                <li className="category__item" key={index}>
-                                    <i className="fa fa-angle-right"></i>
-                                    {category}
-                                </li>
-                            )
-                        }}
-                    </Category>
+                    {categories.map((category, index) => <Category category={category} key={index} />)}
                 </div>
             </div>
             <div className="facet">
@@ -70,7 +106,7 @@ function SideBar() {
                 </div>
 
                 <div className="refinement Brand">
-                    <Refinement title='Brand' data={types} />
+                    <Refinement title='Brand' data={brands} />
                 </div>
 
                 <div className="refinement type">
