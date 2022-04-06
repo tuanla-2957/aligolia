@@ -2,50 +2,44 @@ import './Content.scss'
 import TopBar from '../Topbar/Topbar'
 import Products from '../Products/Products';
 import Pagination from '../Pagination/Pagination';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { getProducts } from '../slice/productsSlice'
+import { setPaginationChange, sortFilterChange } from '../slice/filtersSlice'
+import { useDispatch, useSelector } from 'react-redux';
 
 function Content() {
-    const initPaging = {
-        _page: 1,
-        _limit: 16
-    }
-    const [pagination, SetPagination] = useState(initPaging)
-    const [params, setParams] = useState(initPaging)
-    const [products, setProducts] = useState([])
-
-
+    const products = useSelector(state => state.products.list)
+    const pagination = useSelector(state => state.products.pagination)
+    const params = useSelector(state => state.filters.params)
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const url = `http://localhost:3000/products`
-        axios.get(url, {params})
-            .then(res => {
-                setProducts(res.data.data || [])
-                SetPagination(res.data.pagination)
-            })
-            .catch(error => console.log(error));
-    }, [params])
+        dispatch(getProducts(params))
+    }, [dispatch, params])
 
     function handlePageChange(newPage) {
-        setParams({
-            ...params,
-            _page: newPage
-        })
+        dispatch(setPaginationChange(newPage))
     }
 
     function handleSortProduct(sortValue) {
-        setParams({
-            ...params,
-            _sort: "price",
-            _order: sortValue
-        })
+        if(sortValue) {
+            dispatch(sortFilterChange({
+                _sort: 'price',
+                _order: sortValue
+            }))
+        } else {
+            dispatch(sortFilterChange({
+                _sort: '',
+                _order: ''
+            }))
+        }
     }
 
     return (
         <div className="results-wrapper">
             <div className="results">
-                <TopBar 
-                    totalResult={pagination._totalRows} 
+                <TopBar
+                    totalResult={pagination._totalRows}
                     onSortChange={handleSortProduct}
                 />
                 <div className="products">
@@ -53,7 +47,7 @@ function Content() {
                         <Products className='product col-md-6 col-lg-3' products={products} />
                     </div>
                 </div>
-                <Pagination 
+                <Pagination
                     pagination={pagination}
                     onPageChange={handlePageChange}
                 />
