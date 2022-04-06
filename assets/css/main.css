@@ -1,0 +1,249 @@
+/*---------------------header---------------------*/
+
+header {
+    position: fixed;
+    z-index: var(--z-sticky);
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    background: var(--bg-header);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    margin-right: 12px;
+}
+
+.logo__name {
+    margin-right: 16px;
+    font-size: var(--fs-6xs);
+    font-weight: 700;
+    color: var(--white-color);
+}
+
+.header__search {
+    height: 40px;
+}
+
+.input-search input {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.search__icon {
+    background-color: var(--orange-color);
+}
+
+/*------------------------content------------------------*/
+
+.content {
+    background-color: var(--white-color);
+    padding-top: 60px;
+    overflow: hidden;
+}
+
+/* side-bar */
+
+.side-bar {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    padding: 20px 20px 20px 10px;
+    height: 100%;
+    width: 230px;
+    border-right: 1px solid var(--border-line);
+    overflow-y: auto;
+}
+
+.clear-filter {
+    margin-bottom: 16px;
+}
+
+.facet{
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-line);
+}
+
+.facet__title {
+    font-size: var(--fs-base);
+    color: var(--gray-color);
+    margin-bottom: 8px;
+}
+
+.category__item {
+    font-size: var(--fs-s);
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.refinement__title {
+    font-weight: 700;
+    font-size: var(--fs-base);
+    width: 100%;
+    margin: 4px 0;
+}
+
+.refinement__list {
+    font-size: var(--fs-s);
+}
+
+.refinement__quantity {
+    color: var(--gray-color);
+}
+
+.refinement__search input {
+    font-size: var(--fs-xs);
+    line-height: var(--fs-xs);
+}
+
+.refinement__item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    padding: 4px 0;
+}
+
+.rating__star i {
+    color: var(--orange-color);
+    font-size: var(--fs-xs);
+}
+
+.rating__count {
+    margin: 2px 0 0 8px;
+}
+
+
+
+.price__range {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price__range input {
+    width: 30%
+} 
+
+.button-circle {
+    border-radius: 50%;
+    background-color: var(--border-line);
+    border: 1px solid var( --gray-color);
+}
+
+.side-bar__other {
+    padding: 10px;
+    font-size: var(--fs-s);
+    color: var(--black10-color);
+}
+
+/* results */
+
+.results-wrapper {
+    width: 100%;
+    padding-left: 230px;
+}
+
+.results {
+    padding: 0 10px;
+}
+
+/* topbar */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+.topbar__text {
+    color: var(--gray-color);
+    font-size: var(--fs-s);
+}
+
+/* card */
+.products {
+    min-height: calc(100vh - 185px);
+}
+
+.product {
+    padding: 6px;
+}
+.card {
+    padding: 10px 20px 20px 20px;
+    height: 295px;
+}
+
+.card__img {
+    width: 100%;
+    height: 150px;
+}
+
+.card-text {
+    font-size: var(--fs-s);
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.card__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card__price {
+    font-size: var(--fs-base);
+    font-weight: 700;
+}
+
+/* pagination */
+
+.pagination {
+    width: 100%;
+    height: 50px;
+    margin: 10px 0;
+    background-color: var(--border-line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination__link {
+    padding: 0 8px;
+    cursor: pointer;
+    color: var(--blue-color);
+}
+
+.pagination__link:hover {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.page--disable {
+    color: var(--gray-color);
+    cursor: default;
+}
+
+.page--disable:hover {
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.page--active {
+    cursor: default;
+    font-weight: 700;
+    color: var(--base-color);
+}
+
+.page--active:hover {
+    text-decoration: none;
+}
